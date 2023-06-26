@@ -4,7 +4,7 @@ import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import "../css/ClothingPage.css";
 import { ShoppingCartContext } from "../contexts/HomePageContext";
 
-export default function ItemCard({ name, price, rating }) {
+export default function ItemCard({ name, price, rating, id }) {
   const { shoppingCart, updateCart } = useContext(ShoppingCartContext);
   const [sizeSelected, setSize] = useState("");
   const [allowCartUpdate, isSizeSelected] = useState(false);
@@ -15,6 +15,7 @@ export default function ItemCard({ name, price, rating }) {
         name: name,
         price: price,
         size: sizeSelected,
+        id: id
       };
       updateCart([item, ...shoppingCart]);
     } else {

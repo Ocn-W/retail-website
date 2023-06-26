@@ -5,12 +5,11 @@ import {
   faHeart,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import "../css/HomePage.css";
+import "../css/Navigation.css";
 import { NavigationContext, ShoppingCartContext } from "../contexts/HomePageContext";
-import ShoppingCart from "./ShoppingCart";
 
 export default function Navigation() {
-  const { showClothingPage } = useContext(NavigationContext);
+  const { showClothingPage, isCartShowing } = useContext(NavigationContext);
   const { shoppingCart } = useContext(ShoppingCartContext);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -30,17 +29,21 @@ export default function Navigation() {
     showClothingPage(false);
   };
 
+  const showCart = () => {
+    isCartShowing(true);
+  }
+
   return (
     <>
       <nav>
         <div className="navTools">
           <p onClick={returnHome}>Fashion Xpress</p>
           <div className="navIcons">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faMagnifyingGlass} style={{cursor: 'pointer'}}/>
+            <FontAwesomeIcon icon={faHeart} style={{cursor: 'pointer'}}/>
             <div style={{display:'flex', alignItems: 'center'}}>
-            <FontAwesomeIcon icon={faCartShopping} />
-            <p style={{margin: '0 10px', fontSize: '14px', fontWeight: '450'}}>{shoppingCart.length}</p>
+            <FontAwesomeIcon icon={faCartShopping} style={{cursor: 'pointer'}} onClick={showCart}/>
+            <p style={{margin: '0 10px', fontSize: '14px', fontWeight: '450', cursor: 'default'}}>{shoppingCart.length}</p>
             </div>
           </div>
         </div>

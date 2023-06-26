@@ -49,9 +49,8 @@ useEffect(() => {
     });
   };
 
-   addToList(Array.from({ length: 9 }, generateItem)), 
-  console.log(itemList);
-}, []);
+   addToList(Array.from({ length: 9 }, generateItem));
+}, [addToList]);
 
   return (
     <>
@@ -71,7 +70,8 @@ useEffect(() => {
             <ItemCard 
             name={item.name} 
             price={item.price} 
-            rating={item.rating} 
+            rating={item.rating}
+            id={item.id} 
             key={item.id}
             />)}
           </div>
