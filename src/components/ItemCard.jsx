@@ -1,60 +1,78 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import "../css/ClothingPage.css";
+import { ShoppingCartContext } from "../contexts/HomePageContext";
 
-export default function ItemCard() {
-  const topItem = {
-    type: "Top",
-    name: "",
-    price: "",
-    rating: "",
-  };
+export default function ItemCard({ name, price, rating }) {
+  const { shoppingCart, updateCart } = useContext(ShoppingCartContext);
+  const [sizeSelected, setSize] = useState("");
+  const [allowCartUpdate, isSizeSelected] = useState(false);
 
-  //Generate Random values for each Top clothing piece
-  const topNameOptions = ["Regular Shirt", "Long Sleeve", "Sweater", "Jacket"];
-  const ratingOptions = ["★✩✩✩✩", "★★✩✩✩", "★★★✩✩", "★★★★✩", "★★★★★"];
-  const minPrice = 30;
-  const maxPrice = 120;
+  function addToCart() {
+    if (allowCartUpdate === true) {
+      const item = {
+        name: name,
+        price: price,
+        size: sizeSelected,
+      };
+      updateCart([item, ...shoppingCart]);
+    } else {
+      alert("Please select a size!");
+    }
+  }
 
-  topItem.name =
-    topNameOptions[Math.floor(Math.random() * topNameOptions.length)];
-  topItem.price =
-    Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
-  topItem.rating =
-    ratingOptions[Math.floor(Math.random() * ratingOptions.length)];
+  function chooseSize(value) {
+    setSize(value);
+    isSizeSelected(true);
+  }
 
   return (
     <>
       <div className="itemCard">
         <img src="src/assets/shirt-img.png" alt="Item" />
         <div className="itemCardInfo">
-          <p>{topItem.name}</p>
-          <p>${topItem.price}</p>
+          <p>{name}</p>
+          <p>${price}</p>
           <div className="itemCardSizes">
-            <button>S</button>
-            <button>M</button>
-            <button>L</button>
-            <button>XL</button>
+            <button
+              className={sizeSelected === "S" ? "selected" : ""}
+              onClick={() => chooseSize("S")}
+            >
+              S
+            </button>
+            <button
+              className={sizeSelected === "M" ? "selected" : ""}
+              onClick={() => chooseSize("M")}
+            >
+              M
+            </button>
+            <button
+              className={sizeSelected === "L" ? "selected" : ""}
+              onClick={() => chooseSize("L")}
+            >
+              L
+            </button>
+            <button
+              className={sizeSelected === "XL" ? "selected" : ""}
+              onClick={() => chooseSize("XL")}
+            >
+              XL
+            </button>
           </div>
           <p>
             Reviews:{" "}
             <span style={{ color: "gold", textShadow: "0px 1px 1px black" }}>
-              {topItem.rating}
+              {rating}
             </span>
           </p>
         </div>
-        <button
-          style={{
-            marginBottom: "20px",
-            backgroundColor: "green",
-            borderRadius: "25px",
-            boxShadow: "0px 1px 2px black",
-            border: "none",
-            padding: "10px",
-            cursor: "pointer",
-          }}
-        >
+        <div>
+        <button className="addToCart" onClick={addToCart}>
           Add To Cart
         </button>
+        <FontAwesomeIcon icon={faHeart} style={{color: 'red', margin: '0 30px'}}/>
+        </div>
       </div>
     </>
   );

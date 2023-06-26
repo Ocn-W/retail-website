@@ -6,10 +6,12 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import "../css/HomePage.css";
-import { NavigationContext } from "../contexts/HomePageContext";
+import { NavigationContext, ShoppingCartContext } from "../contexts/HomePageContext";
+import ShoppingCart from "./ShoppingCart";
 
 export default function Navigation() {
   const { showClothingPage } = useContext(NavigationContext);
+  const { shoppingCart } = useContext(ShoppingCartContext);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleMouseEnter = () => {
@@ -36,7 +38,10 @@ export default function Navigation() {
           <div className="navIcons">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             <FontAwesomeIcon icon={faHeart} />
+            <div style={{display:'flex', alignItems: 'center'}}>
             <FontAwesomeIcon icon={faCartShopping} />
+            <p style={{margin: '0 10px', fontSize: '14px', fontWeight: '450'}}>{shoppingCart.length}</p>
+            </div>
           </div>
         </div>
         <div className="navCategories">

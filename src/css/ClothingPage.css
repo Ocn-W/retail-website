@@ -71,10 +71,36 @@
   width: auto;
   font-weight: 550;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .itemCardSizes button:hover {
   text-decoration: black underline;
+}
+
+.itemCardSizes button.selected {
+  border: 1px solid black;
+  background-color: rgb(235, 235, 235);
+  border-radius: 50%;
+}
+
+.addToCart {
+  margin-bottom: 20px;
+  background-color: rgb(51, 255, 0);
+  border-radius: 25px;
+  box-shadow: 0px 1px 2px black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.addToCart:hover {
+  background-color: rgb(179, 255, 0);
+}
+
+.addToCart:active {
+  background-color: rgb(24, 202, 0);
+  box-shadow: none;
 }
 
 .itemCard img {
@@ -84,6 +110,7 @@
 .itemList {
   margin-left: 20%;
   width: 80%;
+  padding-top: 25px;
   background-color: white;
 }
 
@@ -111,5 +138,5 @@
 .items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0px;
+  gap: 50px 0px;
 }

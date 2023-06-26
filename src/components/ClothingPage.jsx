@@ -1,9 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/ClothingPage.css";
 import ItemCard from "./ItemCard";
 
 export default function ClothingPage() {
-  const items = Array.from({ length: 9 });
+const [itemList, addToList] = useState([]);
+    
+useEffect(() => {
+ function generateItem() {
+    let topItem = {
+      name: "",
+      price: "",
+      rating: "",
+      id: "",
+    };
+
+    const topNameOptions = [
+      "Regular Shirt",
+      "Long Sleeve",
+      "Sweater",
+      "Jacket",
+    ];
+    const ratingOptions = ["★✩✩✩✩", "★★✩✩✩", "★★★✩✩", "★★★★✩", "★★★★★"];
+    const minPrice = 30;
+    const maxPrice = 120;
+
+    //Generate a random 10 character "id" to identify individual items
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const idLength = 10;
+    const itemId = Array.from(
+      { length: idLength },
+      () => characters[Math.floor(Math.random() * characters.length)]
+    ).join("");
+
+    //Generate Random values for each Top clothing piece
+    topItem.name =
+      topNameOptions[Math.floor(Math.random() * topNameOptions.length)];
+    topItem.price =
+      Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
+    topItem.rating =
+      ratingOptions[Math.floor(Math.random() * ratingOptions.length)];
+
+    return (topItem = {
+      name: topItem.name,
+      price: topItem.price,
+      rating: topItem.rating,
+      id: itemId,
+    });
+  };
+
+   addToList(Array.from({ length: 9 }, generateItem)), 
+  console.log(itemList);
+}, []);
 
   return (
     <>
@@ -19,11 +67,13 @@ export default function ClothingPage() {
         </div>
         <div className="itemList">
           <div className="items">
-            {items.map((item, index) => (
-              <p>
-                <ItemCard key={index} />
-              </p>
-            ))}
+            {itemList.map((item, index) => 
+            <ItemCard 
+            name={item.name} 
+            price={item.price} 
+            rating={item.rating} 
+            key={item.id}
+            />)}
           </div>
           <div className="itemListBtns">
             <button>⬅ Previous</button>
