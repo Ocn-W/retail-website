@@ -12,6 +12,7 @@ export default function Navigation() {
   const { showClothingPage, isCartShowing } = useContext(NavigationContext);
   const { shoppingCart } = useContext(ShoppingCartContext);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showSearch, setSearchInput] = useState(false);
 
   const handleMouseEnter = () => {
     setShowDropdown(true);
@@ -27,11 +28,16 @@ export default function Navigation() {
 
   const returnHome = () => {
     showClothingPage(false);
+    setSearchInput(false);
+  };
+
+  const displaySearchInput = () => {
+    setSearchInput(true)
   };
 
   const showCart = () => {
     isCartShowing(true);
-  }
+  };
 
   return (
     <>
@@ -39,7 +45,8 @@ export default function Navigation() {
         <div className="navTools">
           <p onClick={returnHome}>Fashion Xpress</p>
           <div className="navIcons">
-            <FontAwesomeIcon icon={faMagnifyingGlass} style={{cursor: 'pointer'}}/>
+            {showSearch && <input type='text' placeholder='Search..' className='searchInput'/>}
+            <FontAwesomeIcon icon={faMagnifyingGlass} style={{cursor: 'pointer'}} onClick={displaySearchInput}/>
             <FontAwesomeIcon icon={faHeart} style={{cursor: 'pointer'}}/>
             <div style={{display:'flex', alignItems: 'center'}}>
             <FontAwesomeIcon icon={faCartShopping} style={{cursor: 'pointer'}} onClick={showCart}/>

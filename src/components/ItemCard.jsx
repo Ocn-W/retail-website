@@ -15,7 +15,7 @@ export default function ItemCard({ name, price, rating, id }) {
         name: name,
         price: price,
         size: sizeSelected,
-        id: id
+        id: id + sizeSelected
       };
       updateCart([item, ...shoppingCart]);
     } else {

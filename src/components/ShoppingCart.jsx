@@ -3,11 +3,15 @@ import '../css/ShoppingCart.css';
 import { NavigationContext, ShoppingCartContext } from '../contexts/HomePageContext';
 
 export default function ShoppingCart() {
-    const { shoppingCart } = useContext(ShoppingCartContext);
+    const { shoppingCart, updateCart } = useContext(ShoppingCartContext);
     const { isCartShowing } = useContext(NavigationContext);
 
     function closeCart() {
         isCartShowing(false);
+    }
+
+    function removeItem(itemId) {
+        updateCart(shoppingCart.filter(item => item.id !== itemId));
     }
 
     function totalCartValue() {
@@ -27,6 +31,7 @@ export default function ShoppingCart() {
         {shoppingCart.map((item, index) => {
           return (
             <div className="userCartItem" key={index} id={item.id}>
+              <button onClick={() => {removeItem(item.id)}}>X</button>
               <p>{item.name}</p>
               <p>Size: {item.size}</p>
               <p>${item.price}</p>
@@ -36,6 +41,8 @@ export default function ShoppingCart() {
         </div>
         <div className="userCartTotal">
           <p>Total: ${totalCartValue()}</p>
+          <button onClick={() => updateCart([])}>Clear Cart</button>
+          <button>Check Out</button>
         </div>
       </div>
     </>

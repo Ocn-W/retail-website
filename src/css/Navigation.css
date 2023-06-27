@@ -23,6 +23,12 @@ nav {
     width: 25%;
 }
 
+.searchInput {
+    border: 1px solid white;
+    height: 25px;
+    width: 50%;
+}
+
 .navTools p {
     margin: 20px 100px;
     cursor: pointer;

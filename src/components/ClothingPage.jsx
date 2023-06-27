@@ -72,7 +72,7 @@ useEffect(() => {
             price={item.price} 
             rating={item.rating}
             id={item.id} 
-            key={item.id}
+            key={index}
             />)}
           </div>
           <div className="itemListBtns">
