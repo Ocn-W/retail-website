@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "../css/ClothingPage.css";
 import { ShoppingCartContext } from "../contexts/HomePageContext";
 
@@ -15,7 +15,7 @@ export default function ItemCard({ name, price, rating, id }) {
         name: name,
         price: price,
         size: sizeSelected,
-        id: id + sizeSelected
+        id: id + sizeSelected,
       };
       updateCart([item, ...shoppingCart]);
     } else {
@@ -69,10 +69,13 @@ export default function ItemCard({ name, price, rating, id }) {
           </p>
         </div>
         <div>
-        <button className="addToCart" onClick={addToCart}>
-          Add To Cart
-        </button>
-        <FontAwesomeIcon icon={faHeart} style={{color: 'red', margin: '0 30px'}}/>
+          <button className="addToCart" onClick={addToCart}>
+            Add To Cart
+          </button>
+          <FontAwesomeIcon
+            icon={faHeart}
+            style={{ color: "red", margin: "0 30px" }}
+          />
         </div>
       </div>
     </>

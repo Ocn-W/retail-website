@@ -4,7 +4,10 @@ import HomePage from "./components/HomePage";
 import Navigation from "./components/Navigation";
 import ClothingPage from "./components/ClothingPage";
 import ShoppingCart from "./components/ShoppingCart";
-import { NavigationContext, ShoppingCartContext } from "./contexts/HomePageContext";
+import {
+  NavigationContext,
+  ShoppingCartContext,
+} from "./contexts/HomePageContext";
 
 function App() {
   const [clothingPage, showClothingPage] = useState(false);
@@ -13,11 +16,13 @@ function App() {
 
   return (
     <>
-      <NavigationContext.Provider value={{ clothingPage, showClothingPage, showCart, isCartShowing }}>
-        <ShoppingCartContext.Provider value={{shoppingCart, updateCart}}>
-        <Navigation />
-        {clothingPage ? <ClothingPage /> : <HomePage />}
-        {showCart && <ShoppingCart />}
+      <NavigationContext.Provider
+        value={{ clothingPage, showClothingPage, showCart, isCartShowing }}
+      >
+        <ShoppingCartContext.Provider value={{ shoppingCart, updateCart }}>
+          <Navigation />
+          {clothingPage ? <ClothingPage /> : <HomePage />}
+          {showCart && <ShoppingCart />}
         </ShoppingCartContext.Provider>
       </NavigationContext.Provider>
     </>

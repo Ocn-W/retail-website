@@ -6,7 +6,10 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import "../css/Navigation.css";
-import { NavigationContext, ShoppingCartContext } from "../contexts/HomePageContext";
+import {
+  NavigationContext,
+  ShoppingCartContext,
+} from "../contexts/HomePageContext";
 
 export default function Navigation() {
   const { showClothingPage, isCartShowing } = useContext(NavigationContext);
@@ -32,7 +35,7 @@ export default function Navigation() {
   };
 
   const displaySearchInput = () => {
-    setSearchInput(true)
+    setSearchInput(true);
   };
 
   const showCart = () => {
@@ -45,12 +48,35 @@ export default function Navigation() {
         <div className="navTools">
           <p onClick={returnHome}>Fashion Xpress</p>
           <div className="navIcons">
-            {showSearch && <input type='text' placeholder='Search..' className='searchInput'/>}
-            <FontAwesomeIcon icon={faMagnifyingGlass} style={{cursor: 'pointer'}} onClick={displaySearchInput}/>
-            <FontAwesomeIcon icon={faHeart} style={{cursor: 'pointer'}}/>
-            <div style={{display:'flex', alignItems: 'center'}}>
-            <FontAwesomeIcon icon={faCartShopping} style={{cursor: 'pointer'}} onClick={showCart}/>
-            <p style={{margin: '0 10px', fontSize: '14px', fontWeight: '450', cursor: 'default'}}>{shoppingCart.length}</p>
+            {showSearch && (
+              <input
+                type="text"
+                placeholder="Search.."
+                className="searchInput"
+              />
+            )}
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              style={{ cursor: "pointer" }}
+              onClick={displaySearchInput}
+            />
+            <FontAwesomeIcon icon={faHeart} style={{ cursor: "pointer" }} />
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                style={{ cursor: "pointer" }}
+                onClick={showCart}
+              />
+              <p
+                style={{
+                  margin: "0 10px",
+                  fontSize: "14px",
+                  fontWeight: "450",
+                  cursor: "default",
+                }}
+              >
+                {shoppingCart.length}
+              </p>
             </div>
           </div>
         </div>

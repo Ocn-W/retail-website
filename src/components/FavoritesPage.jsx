@@ -1,7 +1,15 @@
-import React from 'react'
+import React from 'react';
+
 
 export default function FavoritesPage() {
   return (
-    <div>FavoritesPage</div>
+    <>
+    <div>
+        <p>Filter</p>
+    </div>
+    <div>
+        <p>Favorite Items</p>
+    </div>
+    </>
   )
 }

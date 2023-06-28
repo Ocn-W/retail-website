@@ -3,12 +3,12 @@ import "../css/HomePage.css";
 import { NavigationContext } from "../contexts/HomePageContext";
 
 export default function HomePage() {
-    const { showClothingPage } = useContext(NavigationContext);
+  const { showClothingPage } = useContext(NavigationContext);
 
-    const displayClothing = () => {
-        showClothingPage(true);
-      };
-    
+  const displayClothing = () => {
+    showClothingPage(true);
+  };
+
   return (
     <>
       <div className="banner1">
