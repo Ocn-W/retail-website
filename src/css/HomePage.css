@@ -1,6 +1,6 @@
-body {
-  height: 100vh;
+.homepageContainer {
   overflow-y: scroll;
+  height: 79.5vh;
 }
 
 .banner1,

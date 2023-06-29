@@ -11,6 +11,7 @@ export default function HomePage() {
 
   return (
     <>
+    <div className="homepageContainer">
       <div className="banner1">
         <div className="bannerInfo">
           <h2>New Arrivals</h2>
@@ -32,6 +33,7 @@ export default function HomePage() {
       <footer>
         <p>2023 Ocean Waring</p>
       </footer>
+      </div>
     </>
   );
 }

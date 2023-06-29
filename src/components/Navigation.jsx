@@ -12,7 +12,7 @@ import {
 } from "../contexts/HomePageContext";
 
 export default function Navigation() {
-  const { showClothingPage, isCartShowing } = useContext(NavigationContext);
+  const { showClothingPage, isCartShowing, displayFavorite } = useContext(NavigationContext);
   const { shoppingCart } = useContext(ShoppingCartContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showSearch, setSearchInput] = useState(false);
@@ -31,16 +31,22 @@ export default function Navigation() {
 
   const returnHome = () => {
     showClothingPage(false);
+    displayFavorite(false);
     setSearchInput(false);
   };
 
   const displaySearchInput = () => {
-    setSearchInput(true);
+    setSearchInput(!showSearch);
   };
 
   const showCart = () => {
     isCartShowing(true);
   };
+
+  const showFavorites = () => {
+    showClothingPage(false);
+    displayFavorite(true);
+  }
 
   return (
     <>
@@ -60,7 +66,7 @@ export default function Navigation() {
               style={{ cursor: "pointer" }}
               onClick={displaySearchInput}
             />
-            <FontAwesomeIcon icon={faHeart} style={{ cursor: "pointer" }} />
+            <FontAwesomeIcon icon={faHeart} style={{ cursor: "pointer" }} onClick={showFavorites}/>
             <div style={{ display: "flex", alignItems: "center" }}>
               <FontAwesomeIcon
                 icon={faCartShopping}

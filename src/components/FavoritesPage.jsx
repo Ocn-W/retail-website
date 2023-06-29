@@ -1,15 +1,92 @@
-import React from 'react';
-
+import React, { useContext, useState } from "react";
+import { ShoppingCartContext } from "../contexts/HomePageContext";
+import '../css/FavoritesPage.css';
 
 export default function FavoritesPage() {
+  const [showPricesOption, setShowPricesOption] = useState(false);
+  const [showRatingOption, setShowRatingOption] = useState(false);
+  const { userFavorites } = useContext(ShoppingCartContext);
+  const { shoppingCart, updateCart } = useContext(ShoppingCartContext);
+
+  function addToCart(item) {
+    updateCart([item, ...shoppingCart]);
+    console.log(shoppingCart);
+  }
+
+  function togglePriceOption() {
+    setShowPricesOption(!showPricesOption);
+  }
+
+  function toggleRatingOption() {
+    setShowRatingOption(!showRatingOption);
+  }
+
   return (
-    <>
-    <div>
-        <p>Filter</p>
+    <div className="favoritePage">
+        <p>FAVORITE ITEMS</p>        
+        <div className="faveSideBar"> 
+            <p>FILTER</p>
+            <ul className="filterOptions">
+              <li>
+                Price
+                <button onClick={() => togglePriceOption()}>
+                {showPricesOption ? "-" : "+"}
+                </button>
+                {showPricesOption && (
+                  <div className="pricesExpand">
+                    <p>$30</p>
+                    <input type="range" min={30} max={120} step={1} />
+                    <p>$120</p>
+                  </div>
+                )}
+              </li>
+              <li>
+                Rating
+                <button onClick={() => toggleRatingOption()}>
+                {showRatingOption ? "-" : "+"}
+                </button>
+                {showRatingOption && (
+                  <div className="ratingExpand">
+                    <label>
+                      <input type="radio" name="rating" value="one-star" />
+                      ★✩✩✩✩
+                    </label>
+                    <label>
+                      <input type="radio" name="rating" value="two-star" />
+                      ★★✩✩✩
+                    </label>
+                    <label>
+                      <input type="radio" name="rating" value="three-star" />
+                      ★★★✩✩
+                    </label>
+                    <label>
+                      <input type="radio" name="rating" value="four-star" />
+                      ★★★★✩
+                    </label>
+                    <label>
+                      <input type="radio" name="rating" value="five-star" />
+                      ★★★★★
+                    </label>
+                  </div>
+                )}
+              </li>
+            </ul>
+        </div>
+      <div className="favePageContainer">
+        {userFavorites.map((item, index) => {
+            return (
+              <div className="userFaveItem" key={index} id={item.id}>
+                { item.name === "T-Shirt" ? <img src="src/assets/T-Shirt.jpg" alt="T-Shirt Image"/> : item.name === "Long Sleeve" ? <img src="src/assets/LongSleeve.jpg" alt="Long Sleeve Image"/> : item.name === "Jacket" ? <img src="src/assets/Jacket.jpg" alt="Jacket Image"/> : item.name === "Sweater" && <img src="src/assets/Sweater.jpg" alt="Sweater Image"/> }
+                <p>{item.name}</p>
+                <p>Size: {item.size}</p>
+                <p>${item.price}</p>
+                <button className="addToCart" onClick={() => addToCart(item)}>
+                  Add To Cart
+                </button>
+              </div>
+            )
+        })}
+      </div>
     </div>
-    <div>
-        <p>Favorite Items</p>
-    </div>
-    </>
-  )
+  );
 }

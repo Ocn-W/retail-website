@@ -29,7 +29,7 @@ export default function ShoppingCart() {
     <>
       <div className="userCart">
         <p>Your Cart</p>
-        <button className="closeBtn" onClick={() => closeCart}>
+        <button className="closeBtn" onClick={closeCart}>
           X
         </button>
         <div style={{ overflowY: "auto", height: "65%" }}>

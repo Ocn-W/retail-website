@@ -10,7 +10,6 @@
   border-right: 1px solid black;
   position: fixed;
   z-index: 1;
-  overflow-y: auto;
 }
 
 .sideCategories {
@@ -22,7 +21,7 @@
   list-style: none;
   margin-bottom: 20px;
   color: black;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 650;
   cursor: pointer;
 }
@@ -34,7 +33,7 @@
 .filterBar p {
   text-align: center;
   color: black;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 750;
   margin-top: 0;
   margin-bottom: 0;
@@ -80,7 +79,6 @@
 .ratingExpand {
   display: flex;
   flex-direction: column;
-  
 }
 
 label {
@@ -97,6 +95,12 @@ label {
   width: 75%;
   margin-left: 50px;
   box-shadow: 0px 1px 5px black;
+}
+
+.itemCard img {
+  height: 200px;
+  border-radius: 25px;
+  margin: 10px auto;
 }
 
 .itemCardInfo {
@@ -152,8 +156,19 @@ label {
   box-shadow: none;
 }
 
-.itemCard img {
-  height: 200px;
+.favoriteBtn {
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: grey;
+  cursor: pointer;
+  font-size: 18px;
+  margin: auto 30px;
+}
+.favoriteBtn:active {
+  transition: .1s ease-out 0s;
+  scale: 0.8;
+  color: red;
 }
 
 .itemList {
@@ -161,6 +176,8 @@ label {
   width: 80%;
   padding-top: 25px;
   background-color: white;
+  overflow-y: scroll;
+  height: 75vh;
 }
 
 .itemListBtns {

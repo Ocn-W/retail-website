@@ -17,7 +17,7 @@ export default function ClothingPage() {
       };
 
       const topNameOptions = [
-        "Regular Shirt",
+        "T-Shirt",
         "Long Sleeve",
         "Sweater",
         "Jacket",
@@ -50,7 +50,7 @@ export default function ClothingPage() {
         id: itemId,
       });
     }
-    //Create an array of 9 items using the generateItem function
+//Create an array of 9 items using the generateItem function
     addToList(Array.from({ length: 9 }, generateItem));
   }, [addToList]);
 

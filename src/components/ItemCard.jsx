@@ -5,7 +5,7 @@ import "../css/ClothingPage.css";
 import { ShoppingCartContext } from "../contexts/HomePageContext";
 
 export default function ItemCard({ name, price, rating, id }) {
-  const { shoppingCart, updateCart } = useContext(ShoppingCartContext);
+  const { shoppingCart, updateCart, userFavorites, updateFavorites } = useContext(ShoppingCartContext);
   const [sizeSelected, setSize] = useState("");
   const [allowCartUpdate, isSizeSelected] = useState(false);
 
@@ -28,10 +28,25 @@ export default function ItemCard({ name, price, rating, id }) {
     isSizeSelected(true);
   }
 
+  function addToFavorite() {
+    if (allowCartUpdate === true) {
+        const item = {
+          name: name,
+          price: price,
+          size: sizeSelected,
+          id: id + sizeSelected,
+        };
+        updateFavorites([item, ...userFavorites]);
+        alert(`${item.name} in size ${item.size} added to favorites!`);
+      } else {
+        alert("Please select a size!");
+      }
+  }
+
   return (
     <>
       <div className="itemCard">
-        <img src="src/assets/shirt-img.png" alt="Item" />
+      { name === "T-Shirt" ? <img src="src/assets/T-Shirt.jpg" alt="T-Shirt Image"/> : name === "Long Sleeve" ? <img src="src/assets/LongSleeve.jpg" alt="Long Sleeve Image"/> : name === "Jacket" ? <img src="src/assets/Jacket.jpg" alt="Jacket Image"/> : name === "Sweater" && <img src="src/assets/Sweater.jpg" alt="Sweater Image"/> }
         <div className="itemCardInfo">
           <p>{name}</p>
           <p>${price}</p>
@@ -72,10 +87,9 @@ export default function ItemCard({ name, price, rating, id }) {
           <button className="addToCart" onClick={addToCart}>
             Add To Cart
           </button>
-          <FontAwesomeIcon
-            icon={faHeart}
-            style={{ color: "red", margin: "0 30px" }}
-          />
+          <button className="favoriteBtn" onClick={addToFavorite}>
+            <FontAwesomeIcon icon={faHeart}/>
+          </button>
         </div>
       </div>
     </>
