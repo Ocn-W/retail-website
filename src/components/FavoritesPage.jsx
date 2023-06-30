@@ -24,54 +24,6 @@ export default function FavoritesPage() {
   return (
     <div className="favoritePage">
         <p>FAVORITE ITEMS</p>        
-        <div className="faveSideBar"> 
-            <p>FILTER</p>
-            <ul className="filterOptions">
-              <li>
-                Price
-                <button onClick={() => togglePriceOption()}>
-                {showPricesOption ? "-" : "+"}
-                </button>
-                {showPricesOption && (
-                  <div className="pricesExpand">
-                    <p>$30</p>
-                    <input type="range" min={30} max={120} step={1} />
-                    <p>$120</p>
-                  </div>
-                )}
-              </li>
-              <li>
-                Rating
-                <button onClick={() => toggleRatingOption()}>
-                {showRatingOption ? "-" : "+"}
-                </button>
-                {showRatingOption && (
-                  <div className="ratingExpand">
-                    <label>
-                      <input type="radio" name="rating" value="one-star" />
-                      ★✩✩✩✩
-                    </label>
-                    <label>
-                      <input type="radio" name="rating" value="two-star" />
-                      ★★✩✩✩
-                    </label>
-                    <label>
-                      <input type="radio" name="rating" value="three-star" />
-                      ★★★✩✩
-                    </label>
-                    <label>
-                      <input type="radio" name="rating" value="four-star" />
-                      ★★★★✩
-                    </label>
-                    <label>
-                      <input type="radio" name="rating" value="five-star" />
-                      ★★★★★
-                    </label>
-                  </div>
-                )}
-              </li>
-            </ul>
-        </div>
       <div className="favePageContainer">
         {userFavorites.map((item, index) => {
             return (
@@ -80,6 +32,11 @@ export default function FavoritesPage() {
                 <p>{item.name}</p>
                 <p>Size: {item.size}</p>
                 <p>${item.price}</p>
+                <p>Rating: 
+                  <span style={{ color: "gold", textShadow: "0px 1px 1px black" }}>
+                    {item.rating}
+                  </span>
+                </p>
                 <button className="addToCart" onClick={() => addToCart(item)}>
                   Add To Cart
                 </button>

@@ -6,6 +6,8 @@ export default function ClothingPage() {
   const [itemList, addToList] = useState([]);
   const [showPricesOption, setShowPricesOption] = useState(false);
   const [showRatingOption, setShowRatingOption] = useState(false);
+  const [priceFilter, setPriceFilter] = useState(30);
+  const [ratingFilter, setRatingFilter] = useState(null);
 
   useEffect(() => {
     function generateItem() {
@@ -56,10 +58,34 @@ export default function ClothingPage() {
 
   function togglePriceOption() {
     setShowPricesOption(!showPricesOption);
+    setRatingFilter(null);
+    setShowRatingOption(false);
   }
 
   function toggleRatingOption() {
     setShowRatingOption(!showRatingOption);
+    setPriceFilter(null);
+    setShowPricesOption(false);
+  }
+
+  const filterPrice = (event) => {
+    setPriceFilter(parseInt(event.target.value));
+  }  
+  
+  function filterRating(event) {
+    setRatingFilter(event.target.value);
+  }
+
+  function filterItems(itemList) {
+    return itemList.filter((item) => item.price <= priceFilter || item.rating === ratingFilter).map((item, index) => (
+      <ItemCard
+        name={item.name}
+        price={item.price}
+        rating={item.rating}
+        id={item.id}
+        key={index}
+      />
+    ))
   }
 
   return (
@@ -82,9 +108,20 @@ export default function ClothingPage() {
                 </button>
                 {showPricesOption && (
                   <div className="pricesExpand">
-                    <p>$30</p>
-                    <input type="range" min={30} max={120} step={1} />
-                    <p>$120</p>
+                    <div style={{ display: "flex" }}>
+                      <p>$30</p>
+                      <input
+                        type="range"
+                        min={30}
+                        max={120}
+                        step={1}
+                        onChange={filterPrice}
+                      />
+                      <p>$120</p>
+                    </div>
+                    <p>
+                      Sort From: ${priceFilter}
+                    </p>
                   </div>
                 )}
               </li>
@@ -96,23 +133,23 @@ export default function ClothingPage() {
                 {showRatingOption && (
                   <div className="ratingExpand">
                     <label>
-                      <input type="radio" name="rating" value="one-star" />
+                      <input type="radio" name="rating" value='★✩✩✩✩' onClick={filterRating} />
                       ★✩✩✩✩
                     </label>
                     <label>
-                      <input type="radio" name="rating" value="two-star" />
+                      <input type="radio" name="rating" value='★★✩✩✩' onClick={filterRating} />
                       ★★✩✩✩
                     </label>
                     <label>
-                      <input type="radio" name="rating" value="three-star" />
+                      <input type="radio" name="rating" value='★★★✩✩' onClick={filterRating} />
                       ★★★✩✩
                     </label>
                     <label>
-                      <input type="radio" name="rating" value="four-star" />
+                      <input type="radio" name="rating" value='★★★★✩' onClick={filterRating} />
                       ★★★★✩
                     </label>
                     <label>
-                      <input type="radio" name="rating" value="five-star" />
+                      <input type="radio" name="rating" value='★★★★★' onClick={filterRating} />
                       ★★★★★
                     </label>
                   </div>
@@ -121,19 +158,21 @@ export default function ClothingPage() {
             </ul>
           </div>
         </div>
-        <div className="itemList">
-          <div className="items">
-            {itemList.map((item, index) => (
-              <ItemCard
-                name={item.name}
-                price={item.price}
-                rating={item.rating}
-                id={item.id}
-                key={index}
-              />
-            ))}
+        <div className="clothingPageContainer">
+          <div className="clothingItems">
+            {showPricesOption || showRatingOption
+              ? filterItems(itemList)
+              : itemList.map((item, index) => (
+                  <ItemCard
+                    name={item.name}
+                    price={item.price}
+                    rating={item.rating}
+                    id={item.id}
+                    key={index}
+                  />
+                ))}
           </div>
-          <div className="itemListBtns">
+          <div className="clothingPageBtns">
             <button>⬅ Previous</button>
             <button>Next ➡</button>
           </div>

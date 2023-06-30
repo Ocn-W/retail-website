@@ -15,6 +15,7 @@
 .sideCategories {
   border-bottom: 1px solid black;
   margin-bottom: 0;
+  padding: 0;
 }
 
 .sideCategories li {
@@ -27,7 +28,7 @@
 }
 
 .sideCategories li:hover {
-  text-decoration: black underline;
+  text-decoration: underline;
 }
 
 .filterBar p {
@@ -35,8 +36,7 @@
   color: black;
   font-size: 24px;
   font-weight: 750;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   width: 100%;
   border-bottom: 1px solid black;
 }
@@ -49,15 +49,14 @@
 .filterOptions li {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   color: black;
-  padding: 0 0 10px 0;
-  justify-content: space-between;
+  padding: 10px 0;
   border-bottom: 1px dotted grey;
+  position: relative;
 }
 
 .filterOptions button {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   color: black;
   font-weight: 350;
   border: none;
@@ -68,6 +67,7 @@
 
 .pricesExpand {
   display: flex;
+  flex-direction: column;
 }
 
 .pricesExpand p {
@@ -99,8 +99,9 @@ label {
 
 .itemCard img {
   height: 200px;
+  width: auto;
   border-radius: 25px;
-  margin: 10px auto;
+  margin: 5px 10px;
 }
 
 .itemCardInfo {
@@ -119,7 +120,7 @@ label {
 .itemCardSizes button {
   border: none;
   color: black;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   height: 25px;
   width: auto;
   font-weight: 550;
@@ -128,7 +129,7 @@ label {
 }
 
 .itemCardSizes button:hover {
-  text-decoration: black underline;
+  text-decoration: underline;
 }
 
 .itemCardSizes button.selected {
@@ -158,35 +159,37 @@ label {
 
 .favoriteBtn {
   width: fit-content;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: none;
   color: grey;
   cursor: pointer;
   font-size: 18px;
   margin: auto 30px;
 }
+
 .favoriteBtn:active {
-  transition: .1s ease-out 0s;
-  scale: 0.8;
+  transition: 0.1s ease-out 0s;
+  transform: scale(0.8);
   color: red;
 }
 
-.itemList {
+.clothingPageContainer {
   margin-left: 20%;
   width: 80%;
   padding-top: 25px;
   background-color: white;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 75vh;
 }
 
-.itemListBtns {
+.clothingPageBtns {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.itemListBtns button {
+.clothingPageBtns button {
   margin: 10px 20px;
   padding: 10px;
   border-radius: 25px;
@@ -196,12 +199,12 @@ label {
   cursor: pointer;
 }
 
-.itemListBtns button:active {
+.clothingPageBtns button:active {
   color: grey;
   box-shadow: none;
 }
 
-.items {
+.clothingItems {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 50px 0px;

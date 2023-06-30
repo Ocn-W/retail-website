@@ -34,7 +34,8 @@ export default function ItemCard({ name, price, rating, id }) {
           name: name,
           price: price,
           size: sizeSelected,
-          id: id + sizeSelected,
+          rating: rating,
+          id: id + sizeSelected
         };
         updateFavorites([item, ...userFavorites]);
         alert(`${item.name} in size ${item.size} added to favorites!`);
