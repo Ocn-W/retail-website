@@ -1,0 +1,51 @@
+.newsletter {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    height: fit-content;
+    width: 360px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0px 0px 50px black;
+}
+
+.newsletter h2 {
+    margin: 20px 0;
+    text-shadow: 0px 1px 1px black, 0px -1px 1px grey;
+}
+
+.newsletter input {
+    margin-bottom: 20px;
+    background-color: white;
+    height: 40px;
+    color: black;
+}
+
+.submitBtn {
+    height: 40px;
+    background-color: darkblue;
+    border: none;
+    cursor: pointer;
+}
+
+.closePopupBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;    
+    font-size: 18px;
+    font-weight: 750;
+    background-color: rgba(0, 0, 0, 0);
+    color: red;
+    border: none;
+    cursor: pointer;
+}
+
+.closePopupBtn:active {
+    color: rgb(136, 0, 0);
+    text-shadow: none;
+}
+
