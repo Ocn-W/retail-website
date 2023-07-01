@@ -174,10 +174,10 @@ export default function ClothingPage() {
                   />
                 ))}
           </div>
-          <div className="clothingPageBtns">
+        </div>  
+        <div className="clothingPageBtns">
             <button>⬅ Previous</button>
             <button>Next ➡</button>
-          </div>
         </div>
       </div>
     </>

@@ -109,7 +109,7 @@ nav {
     }
 
     .navCatMenu li {
-        font-size: 10px;
+        font-size: 1px;
     }
 
     .searchInput {
@@ -120,6 +120,10 @@ nav {
 @media (min-width: 481px) and (max-width: 768px) {
     .navTools p {
         margin: 20px;
+    }
+
+    nav {
+        width: 100vw;
     }
 
     .navCatMenu li {
