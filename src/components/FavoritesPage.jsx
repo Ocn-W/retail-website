@@ -3,22 +3,12 @@ import { ShoppingCartContext } from "../contexts/HomePageContext";
 import '../css/FavoritesPage.css';
 
 export default function FavoritesPage() {
-  const [showPricesOption, setShowPricesOption] = useState(false);
-  const [showRatingOption, setShowRatingOption] = useState(false);
   const { userFavorites } = useContext(ShoppingCartContext);
   const { shoppingCart, updateCart } = useContext(ShoppingCartContext);
 
   function addToCart(item) {
     updateCart([item, ...shoppingCart]);
     console.log(shoppingCart);
-  }
-
-  function togglePriceOption() {
-    setShowPricesOption(!showPricesOption);
-  }
-
-  function toggleRatingOption() {
-    setShowRatingOption(!showRatingOption);
   }
 
   return (

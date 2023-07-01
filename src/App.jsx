@@ -15,6 +15,11 @@ function App() {
   const [shoppingCart, updateCart] = useState([]);
   const [userFavorites, updateFavorites] = useState([]);
   const [displayPopup, setPopup] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
+  
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -26,10 +31,9 @@ function App() {
       clearTimeout(timeoutId);
     }
   }, []);
-  
 
   return (
-    <>
+    <div className={`fade-in ${fadeIn ? 'fade-in-active' : ''}`}>
       <NavigationContext.Provider
         value={{ clothingPage, showClothingPage, showCart, isCartShowing, favoriteList, displayFavorite, setPopup}}
       >
@@ -42,7 +46,7 @@ function App() {
           {displayPopup && <NewsLetter/>}
         </ShoppingCartContext.Provider>
       </NavigationContext.Provider>
-    </>
+    </div>
   );
 }
 

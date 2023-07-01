@@ -3,3 +3,12 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.fade-in.fade-in-active {
+  opacity: 1;
+}

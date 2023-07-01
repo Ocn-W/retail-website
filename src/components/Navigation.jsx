@@ -12,7 +12,7 @@ import {
 } from "../contexts/HomePageContext";
 
 export default function Navigation() {
-  const { showClothingPage, isCartShowing, displayFavorite } = useContext(NavigationContext);
+  const { showClothingPage, showCart, isCartShowing, displayFavorite } = useContext(NavigationContext);
   const { shoppingCart } = useContext(ShoppingCartContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showSearch, setSearchInput] = useState(false);
@@ -39,8 +39,8 @@ export default function Navigation() {
     setSearchInput(!showSearch);
   };
 
-  const showCart = () => {
-    isCartShowing(true);
+  const showUserCart = () => {
+    isCartShowing(!showCart);
   };
 
   const showFavorites = () => {
@@ -71,7 +71,7 @@ export default function Navigation() {
               <FontAwesomeIcon
                 icon={faCartShopping}
                 style={{ cursor: "pointer" }}
-                onClick={showCart}
+                onClick={showUserCart}
               />
               <p
                 style={{

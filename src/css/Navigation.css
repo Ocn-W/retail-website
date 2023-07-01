@@ -102,3 +102,28 @@ nav {
     text-decoration: grey underline;
     color: grey;
 }
+
+@media (max-width: 480px) {
+    .navTools P {
+        margin: 10px;
+    }
+
+    .navCatMenu li {
+        font-size: 12px;
+    }
+
+    .searchInput {
+        width: 25%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .navTools p {
+        margin: 20px;
+    }
+
+    .navCatMenu li {
+        font-size: 12px;
+    }
+
+}

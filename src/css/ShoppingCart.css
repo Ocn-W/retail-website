@@ -98,3 +98,16 @@
 .userCartTotal button:active {
     color: grey;
 }
+
+
+@media (max-width: 480px) {
+    .userCart {
+        width: 75%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .userCart {
+        width: 50%;
+    }
+}
