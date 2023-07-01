@@ -67,3 +67,18 @@
     border-radius: 25px;
     margin: 5px 0 0 0;
 }
+
+@media (max-width: 480px) {
+    .userFaveItem p {
+        font-size: 12px;
+    }
+
+    .userFaveItem {
+        border-radius: 10px;
+    }
+    
+    .userFaveItem img {
+        height: 75px;
+        border-radius: 10px;
+    }
+}

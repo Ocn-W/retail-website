@@ -241,6 +241,10 @@ label {
     gap: 20px 0px;
   }
 
+  .itemCard img {
+    height: 150px;
+  }
+
   .pricesExpand input {
     width: 100%;
   }
