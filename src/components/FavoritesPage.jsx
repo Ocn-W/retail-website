@@ -3,7 +3,7 @@ import { ShoppingCartContext } from "../contexts/HomePageContext";
 import '../css/FavoritesPage.css';
 import Jacket from '../assets/Jacket.jpg';
 import LongSleeve from '../assets/LongSleeve.jpg';
-import TShirt from '../assets/LongSleeve.jpg';
+import TShirt from '../assets/TShirt.jpg';
 import Sweater from '../assets/Sweater.jpg';
 
 export default function FavoritesPage() {

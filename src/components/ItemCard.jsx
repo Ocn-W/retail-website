@@ -4,7 +4,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "../css/ClothingPage.css";
 import Jacket from '../assets/Jacket.jpg';
 import LongSleeve from '../assets/LongSleeve.jpg';
-import TShirt from '../assets/LongSleeve.jpg';
+import TShirt from '../assets/TShirt.jpg';
 import Sweater from '../assets/Sweater.jpg';
 import { ShoppingCartContext } from "../contexts/HomePageContext";
 
