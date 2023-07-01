@@ -11,6 +11,7 @@ export default function HomePage() {
 
   return (
     <>
+    <div className="homePage">
     <div className="homepageContainer">
       <div className="banner1">
         <div className="bannerInfo">
@@ -30,6 +31,7 @@ export default function HomePage() {
           <button onClick={displayClothing}>Explore Styles</button>
         </div>
       </div>
+      </div>      
       <footer>
         <p>2023 Ocean Waring</p>
       </footer>

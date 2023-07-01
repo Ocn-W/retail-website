@@ -1,6 +1,10 @@
 .clothingPage {
+  width: 100%;
   display: flex;
-  height: 100vh;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
   background-color: white;
 }
 
@@ -11,6 +15,7 @@
   background-color: white;
   border-right: 1px solid black;
   position: fixed;
+  left: 0;
   z-index: 1;
 }
 
@@ -177,12 +182,12 @@ label {
 
 .clothingPageContainer {
   margin-left: 20%;
-  width: 80%;
+  display: flex;
+  justify-items: center;
+  width: 100vw;
   padding-top: 25px;
   background-color: white;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 75vh;
+  height: 100%;
 }
 
 .clothingPageBtns {
@@ -206,19 +211,16 @@ label {
   box-shadow: none;
 }
 
-.clothingItems {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px 0px;
-}
-
 @media (max-width: 480px) {
   .sideCategories li {
     font-size: 12px;
   }
 
   .sideBar {
-    width: 25vw;
+    width: 100%;
+    position: static;
+    border-right: none;
+    margin-bottom: 10px;
   }
 
   .sideBar p {
@@ -235,10 +237,13 @@ label {
     align-items: center;
   }
 
-  .clothingItems {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px 0px;
+  .clothingPage {
+    margin-left: 0;
+  }
+
+  .itemCard {
+    width: 90%;
+    margin-left: 0;
   }
 
   .itemCard img {

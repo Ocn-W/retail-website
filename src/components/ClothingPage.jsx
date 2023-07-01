@@ -56,6 +56,7 @@ export default function ClothingPage() {
     addToList(Array.from({ length: 9 }, generateItem));
   }, [addToList]);
 
+  //Handle show filter options
   function togglePriceOption() {
     setShowPricesOption(!showPricesOption);
     setRatingFilter(null);
@@ -68,6 +69,7 @@ export default function ClothingPage() {
     setShowPricesOption(false);
   }
 
+  //save the current value of input range to priceFilter
   const filterPrice = (event) => {
     setPriceFilter(parseInt(event.target.value));
   }  
