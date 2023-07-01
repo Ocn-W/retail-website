@@ -51,8 +51,12 @@
 
 @media (max-width: 480px) {
     .newsletter {
-        height: 20%;
+        height: 30%;
         width: 80%;
+    }
+
+    .newsletter input {
+        height: 20px;
     }
 }
 
