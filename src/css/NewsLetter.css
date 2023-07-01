@@ -49,3 +49,10 @@
     text-shadow: none;
 }
 
+@media (max-width: 480px) {
+    .newsletter {
+        height: 20%;
+        width: 80%;
+    }
+}
+
