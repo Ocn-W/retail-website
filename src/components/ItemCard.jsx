@@ -2,6 +2,10 @@ import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "../css/ClothingPage.css";
+import Jacket from '../assets/Jacket.jpg';
+import LongSleeve from '../assets/LongSleeve.jpg';
+import TShirt from '../assets/LongSleeve.jpg';
+import Sweater from '../assets/Sweater.jpg';
 import { ShoppingCartContext } from "../contexts/HomePageContext";
 
 export default function ItemCard({ name, price, rating, id }) {
@@ -47,7 +51,7 @@ export default function ItemCard({ name, price, rating, id }) {
   return (
     <>
       <div className="itemCard">
-      { name === "T-Shirt" ? <img src="src/assets/T-Shirt.jpg" alt="T-Shirt Image"/> : name === "Long Sleeve" ? <img src="src/assets/LongSleeve.jpg" alt="Long Sleeve Image"/> : name === "Jacket" ? <img src="src/assets/Jacket.jpg" alt="Jacket Image"/> : name === "Sweater" && <img src="src/assets/Sweater.jpg" alt="Sweater Image"/> }
+      { name === "T-Shirt" ? <img src={TShirt} alt="T-Shirt Image"/> : name === "Long Sleeve" ? <img src={LongSleeve} alt="Long Sleeve Image"/> : name === "Jacket" ? <img src={Jacket} alt="Jacket Image"/> : name === "Sweater" && <img src={Sweater} alt="Sweater Image"/> }
         <div className="itemCardInfo">
           <p>{name}</p>
           <p>${price}</p>

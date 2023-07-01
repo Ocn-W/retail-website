@@ -23,7 +23,6 @@ function App() {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      console.log('Trying to display newsletter....');
       setPopup(true);
     }, 5000)
 
